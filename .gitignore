@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/PasswordGen/obj
+/PasswordGen/.vs/PasswordGen/v15
+/.vs
+/PasswordGen/.vs/config
+/PasswordGen/bin/Debug
