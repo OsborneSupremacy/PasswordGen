@@ -7,3 +7,4 @@
 /.vs
 /PasswordGen/.vs/config
 /PasswordGen/bin/Debug
+.suo
