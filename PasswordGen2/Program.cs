@@ -27,17 +27,24 @@ static bool GeneratePassword()
 
 static bool PromptForYOrN(string prompt)
 {
-    Console.Write($"{prompt} (Y = Yes, N = No): ");
+    bool responseValue;
 
-    var response = Console.ReadKey().Key;
+    var keyActions = new Dictionary<ConsoleKey, bool> {
+        { ConsoleKey.Y, true },
+        { ConsoleKey.N, false }
+    };
 
-    while (response != ConsoleKey.Y && response != ConsoleKey.N)
+    Console.Write($"{prompt} ({string.Join(", ", keyActions.Keys)}): ");
+
+    var responseKey = Console.ReadKey().Key;
+
+    while (!keyActions.TryGetValue(responseKey, out responseValue))
     {
         Console.WriteLine();
-        Console.Write("Must enter either Y or N: ");
-        response = Console.ReadKey().Key;
+        Console.Write($"Must enter {string.Join(" or ", keyActions.Keys)}: ");
+        responseKey = Console.ReadKey().Key;
     }
 
     Console.WriteLine();
-    return (response == ConsoleKey.Y);
+    return responseValue;
 }
